@@ -1,26 +1,26 @@
-{
-  "accept": {
-    "meaning": ["受諾する、受け入れる"],
-    "speech": ["動詞"]
+[
+  {
+    "word": "accept",
+    "meaning": "受諾する、受け入れる"
   },
-  "access": {
-    "meaning": ["アクセスする、利用する、入手する", "アクセス"],
-    "speech": ["動詞", "名詞"]
+  {
+    "word": "access",
+    "meaning": "受諾する、受け入れる"
   },
-  "account": {
-    "meaning": ["アカウント、口座"],
-    "speech": ["名詞"]
+  {
+    "word": "account",
+    "meaning": "アカウント、口座"
   },
-  "algorithm": {
-    "meaning": ["アルゴリズム"],
-    "speech": ["名詞"]
+  {
+    "word": "algorithm",
+    "meaning": "アルゴリズム"
   },
-  "allow": {
-    "meaning": ["可能にする、許可する"],
-    "speech": ["動詞"]
+  {
+    "word": "allow",
+    "meaning": "可能にする、許可する"
   },
-  "alternative": {
-    "meaning": ["代替の"],
-    "speech": ["形容詞"]
+  {
+    "word": "alternative",
+    "meaning": "代替の"
   }
-}
+]
