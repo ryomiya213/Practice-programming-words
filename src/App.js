@@ -49,6 +49,9 @@ export class App {
 
       const allWords = jsonData;
       const typingFormElement = document.querySelector('#typing');
+      const wordElement = document.querySelector('#word');
+      const doneWordElement = document.querySelector('#doneWord');
+      const restWordElement = document.querySelector('#restWord');
       const meaningElement = document.querySelector('#meaning');
 
       let words = [];
@@ -57,7 +60,8 @@ export class App {
 
       [words, word, meaning] = this.popWords(allWords.slice());
       let wordIndex = 1;
-      meaningElement.innerText = `${word} ${meaning}`;
+      restWordElement.innerText = word
+      meaningElement.innerText = meaning;
       
       typingFormElement.addEventListener(('input'), () => {
         console.log(typingFormElement.value);
@@ -67,10 +71,14 @@ export class App {
               words = allWords.slice();
             }
             [words, word, meaning] = this.popWords(words);
-            meaningElement.innerText = `${word} ${meaning}`;
+            doneWordElement.innerText = '';
+            restWordElement.innerText = word
+            meaningElement.innerText = meaning;
             typingFormElement.value = '';
             wordIndex = 1;
-          } else { 
+          } else {
+            doneWordElement.innerText = word.slice(0, wordIndex);
+            restWordElement.innerText = word.slice(wordIndex, word.length);
             wordIndex += 1;
           }
         } else {
