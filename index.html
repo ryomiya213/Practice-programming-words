@@ -8,10 +8,22 @@
   </head>
   <body>
     <h1>プログラミング英単語の練習アプリ</h1>
-    <input type="text" id="typing" autofocus>
-    <div id="word"><b id="doneWord"></b><div id="restWord"></div></div>
-    <div id="meaning"></div>
-    <br />
+    <section id='main'>
+      <div id="input-section">
+        <input type="text" id="typing" autofocus>
+        <div id="word"><b id="doneWord" class="word"></b><div id="restWord" class="word"></div></div>
+        <div id="meaning"></div>
+      </div>
+      <div id="count-section">
+        <div id="count"></div>
+        <button type="reset" id="reset">リセット</button>
+      </div>
+      
+    </section>
+    <section id='history'>
+      <ul id="history-list">
+      </ul>
+    </section>
     <footer>引用元：<cite><a href="https://progeigo.org/learning/essential-words-600-plus/">プログラミング必須英単語600+ – プログラミング英語検定</a></cite></footer>
   </body>
 </html>

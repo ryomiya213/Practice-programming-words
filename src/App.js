@@ -6,53 +6,18 @@ export class App {
   }
 
   mount() {
-    // Promise
-/*     fetch('../data/words.json')
-      .then((data) => data.json())
-      .then((dataJson) => {
-        const allWords = dataJson;
-        const typingFormElement = document.querySelector('#typing');
-        const meaningElement = document.querySelector('#meaning');
-
-        let words = [];
-        let word = '';
-        let meaning = '';
-
-        [words, word, meaning] = this.popWords(allWords.slice());
-        let wordIndex = 1;
-        meaningElement.innerText = `${word} ${meaning}`;
-        
-        typingFormElement.addEventListener(('input'), () => {
-          console.log(typingFormElement.value);
-          if (typingFormElement.value === word.slice(0, wordIndex)) {
-            if (wordIndex === word.length) {
-              if (words.length === 0) {
-                words = allWords.slice();
-              }
-              [words, word, meaning] = this.popWords(words);
-              meaningElement.innerText = `${word} ${meaning}`;
-              typingFormElement.value = '';
-              wordIndex = 1;
-            } else { 
-              wordIndex += 1;
-            }
-          } else {
-            typingFormElement.value = word.slice(0, wordIndex - 1);
-          }
-        });
-      }); */
-
-    // Async Function
     const loadJson = async() => {
       const data = await fetch('../data/words.json');
       const jsonData = await data.json();
 
       const allWords = jsonData;
       const typingFormElement = document.querySelector('#typing');
-      const wordElement = document.querySelector('#word');
       const doneWordElement = document.querySelector('#doneWord');
       const restWordElement = document.querySelector('#restWord');
       const meaningElement = document.querySelector('#meaning');
+      const countElement = document.querySelector('#count');
+      const resetElement = document.querySelector('#reset');
+      const historyListElement = document.querySelector('#history-list');
 
       let words = [];
       let word = '';
@@ -60,16 +25,23 @@ export class App {
 
       [words, word, meaning] = this.popWords(allWords.slice());
       let wordIndex = 1;
-      restWordElement.innerText = word
+      restWordElement.innerText = word;
       meaningElement.innerText = meaning;
+      countElement.innerText = `残り${allWords.length}/${allWords.length}`;
       
       typingFormElement.addEventListener(('input'), () => {
         console.log(typingFormElement.value);
         if (typingFormElement.value === word.slice(0, wordIndex)) {
+
           if (wordIndex === word.length) {
             if (words.length === 0) {
-              words = allWords.slice();
+              reset();
             }
+            countElement.innerText = `残り${words.length}/${allWords.length}`;
+            const liElement = document.createElement('li');
+            liElement.innerText = `${word}: ${meaning}`;
+            historyListElement.insertBefore(liElement,historyListElement.firstElementChild);
+
             [words, word, meaning] = this.popWords(words);
             doneWordElement.innerText = '';
             restWordElement.innerText = word
@@ -81,10 +53,25 @@ export class App {
             restWordElement.innerText = word.slice(wordIndex, word.length);
             wordIndex += 1;
           }
+          
         } else {
           typingFormElement.value = word.slice(0, wordIndex - 1);
         }
       });
+
+      resetElement.addEventListener(('click'), () => {
+        reset();
+      });
+
+      const reset = () => {
+        [words, word, meaning] = this.popWords(allWords.slice());
+        wordIndex = 1;
+        doneWordElement.innerText = '';
+        restWordElement.innerText = word;
+        meaningElement.innerText = meaning;
+        countElement.innerText = `残り${allWords.length}/${allWords.length}`;
+        historyListElement.innerHTML = '';
+      };
     };
     
     loadJson();

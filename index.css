@@ -1,6 +1,17 @@
-#doneWord,#restWord {
+.word {
   display: inline-block;
   font-size: large;
+}
+
+#main {
+  display: flex;
+}
+
+#count-section {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 footer {
