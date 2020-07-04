@@ -30,7 +30,7 @@ export class App {
       countElement.innerText = `残り${allWords.length}/${allWords.length}`;
       
       typingFormElement.addEventListener(('input'), () => {
-        console.log(typingFormElement.value);
+        // console.log(typingFormElement.value);
         if (typingFormElement.value === word.slice(0, wordIndex)) {
 
           if (wordIndex === word.length) {
@@ -53,7 +53,7 @@ export class App {
             restWordElement.innerText = word.slice(wordIndex, word.length);
             wordIndex += 1;
           }
-          
+
         } else {
           typingFormElement.value = word.slice(0, wordIndex - 1);
         }
