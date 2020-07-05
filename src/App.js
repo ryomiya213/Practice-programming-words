@@ -7,7 +7,7 @@ export class App {
 
   mount() {
     const loadJson = async() => {
-      const data = await fetch('../data/words.json');
+      const data = await fetch('./data/words.json');
       const jsonData = await data.json();
 
       const allWords = jsonData;
