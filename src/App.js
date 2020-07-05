@@ -1,10 +1,6 @@
 'use strict';
 
 export class App {
-  constructor() {
-    console.log('App.js');
-  }
-
   mount() {
     const loadJson = async() => {
       const data = await fetch('./data/words.json');
